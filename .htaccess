@@ -1,0 +1,21 @@
+# Habilitar rewrite engine
+RewriteEngine On
+
+# Manejo de errores personalizado
+ErrorDocument 404 /periodismo-utb/404.php
+ErrorDocument 500 /periodismo-utb/500.php
+
+# Proteger archivos sensibles
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Proteger carpeta admin (opcional, ya tenemos login)
+<Directory "admin">
+    # Requiere autenticación (puedes comentar esto durante desarrollo)
+    # AuthType Basic
+    # AuthName "Area Restringida"
+    # AuthUserFile /ruta/a/.htpasswd
+    # Require valid-user
+</Directory>
