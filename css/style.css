@@ -183,7 +183,7 @@ section {
 
 .hero-content {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
     padding-right: 30px;
 }
 
@@ -211,7 +211,7 @@ section {
 
 .hero-image {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
     text-align: center;
 }
 
@@ -229,7 +229,7 @@ section {
 
 .noticias-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
     margin-bottom: 50px;
 }
@@ -330,7 +330,7 @@ section {
 
 .acerca-text {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
 }
 
 .acerca-text h3 {
@@ -388,7 +388,7 @@ section {
 
 .acerca-img {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
     text-align: center;
 }
 
@@ -413,7 +413,7 @@ section {
 
 .contacto-info {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
 }
 
 .contacto-info h3 {
@@ -483,7 +483,7 @@ section {
 
 .contacto-form {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
     background-color: var(--white);
     padding: 40px;
     border-radius: 10px;
@@ -714,12 +714,4 @@ section {
         flex-direction: column;
     }
 }
-.hero-image{
-  display: flex;
-  justify-content: flex-end;
-}
 
-.hero-image img{
-  width: 400px;
-  height: auto;
-}
