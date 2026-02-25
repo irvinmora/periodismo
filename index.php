@@ -376,7 +376,7 @@ $check_conn->close();
 
                 <p class="github-link">
                     <i class="fab fa-github"></i>
-                    <a href="https://github.com/tu-usuario/periodismo-utb" target="_blank">Ver proyecto en GitHub</a>
+                    <a href="https://github.com/irvinmora/periodismo" target="_blank">Ver proyecto en GitHub</a>
                 </p>
             </div>
         </div>
