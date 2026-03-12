@@ -2,12 +2,18 @@
 // Verificar migración
 session_status() === PHP_SESSION_NONE && session_start();
 
-@$check_conn = new mysqli('localhost', 'root', '', 'periodismo_utb');
-$show_migration_alert = !(
-    $check_conn->query("SHOW TABLES LIKE 'noticias_subtitulos'")
-    && $check_conn->query("SHOW TABLES LIKE 'noticias_subtitulos'")->num_rows > 0
-);
-$check_conn->close();
+require_once 'conexion.php';
+$check_conn = $conn;
+$show_migration_alert = false;
+if ($check_conn && !$check_conn->connect_error) {
+    $show_migration_alert = !(
+        $check_conn->query("SHOW TABLES LIKE 'noticias_subtitulos'")
+        && $check_conn->query("SHOW TABLES LIKE 'noticias_subtitulos'")->num_rows > 0
+    );
+} else {
+    $show_migration_alert = true; // Fallback to show alert if no connection
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,7 +50,7 @@ $check_conn->close();
         <div class="container nav-container">
             <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
                 <!-- Logo grande -->
-                <img src="assets/WhatsApp Image 2026-01-22 at 8.41.20 PM.jpeg" alt="Impacto Dario - Periodismo UTB"
+                <img src="assets/logo.jpeg" alt="Impacto Dario - Periodismo UTB"
                     style="height: 70px; border-radius: 5px; box-shadow: 0 3px 20px rgba(0,0,0,0.15);">
 
             </a>
@@ -75,7 +81,7 @@ $check_conn->close();
             </div>
 
             <div class="hero-image">
-                <img src="assets/WhatsApp%20Image%202026-01-22%20at%208.41.20%20PM%20(3).jpeg" alt="Impacto Diario">
+                <img src="assets/hero.jpeg" alt="Impacto Diario">
             </div>
 
 
@@ -91,7 +97,7 @@ $check_conn->close();
                 // Intentar conectar a la base de datos
                 try {
 
-                    @$conn = new mysqli('localhost', 'root', '', 'periodismo_utb');
+                    require_once 'conexion.php';
 
                     if (!$conn->connect_error) {
                         $conn->set_charset("utf8");
@@ -239,7 +245,7 @@ $check_conn->close();
                 </div>
 
                 <div class="acerca-img">
-                    <img src="assets/WhatsApp Image 2026-01-22 at 8.41.20 PM (3).jpeg"
+                    <img src="assets/hero.jpeg"
                         alt="Universidad Técnica de Babahoyo" onerror="this.onerror=null; this.src='assets/'">
                 </div>
             </div>

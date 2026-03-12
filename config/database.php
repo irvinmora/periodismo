@@ -10,7 +10,8 @@ class Database {
     
     private function __construct() {
         try {
-            $this->conn = new mysqli('localhost', 'root', '', 'periodismo_utb');
+            require dirname(__DIR__) . '/conexion.php';
+            $this->conn = $conn;
             
             if ($this->conn->connect_error) {
                 throw new Exception("Error de conexión: " . $this->conn->connect_error);
@@ -58,12 +59,7 @@ function isDBConnected() {
 }
 
 function conectarBD() {
-    $servidor = 'localhost';
-    $usuario = 'root';
-    $contraseña = '';
-    $baseDatos = 'periodismo_utb';
-    
-    $conn = new mysqli($servidor, $usuario, $contraseña, $baseDatos);
+    require dirname(__DIR__) . '/conexion.php';
     
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);

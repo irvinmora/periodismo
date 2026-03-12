@@ -12,10 +12,7 @@ ErrorDocument 500 /periodismo-utb/500.php
 </FilesMatch>
 
 # Proteger carpeta admin (opcional, ya tenemos login)
-<Directory "admin">
-    # Requiere autenticación (puedes comentar esto durante desarrollo)
-    # AuthType Basic
-    # AuthName "Area Restringida"
-    # AuthUserFile /ruta/a/.htpasswd
-    # Require valid-user
-</Directory>
+# AuthType Basic
+# AuthName "Area Restringida"
+# AuthUserFile /ruta/a/.htpasswd
+# Require valid-user

@@ -2,12 +2,7 @@
 // Funciones comunes para el sistema
 
 function conectarDB() {
-    $host = 'localhost';
-    $usuario = 'root';
-    $password = '';
-    $database = 'periodismo_utb';
-    
-    $conn = new mysqli($host, $usuario, $password, $database);
+    require dirname(__DIR__) . '/conexion.php';
     
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);

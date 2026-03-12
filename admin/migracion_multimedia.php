@@ -33,7 +33,7 @@ echo "</div>";
 
 try {
     // Conexión a la base de datos
-    $conn = new mysqli('localhost', 'root', '', 'periodismo_utb');
+    require_once dirname(__DIR__) . '/conexion.php';
     
     if ($conn->connect_error) {
         throw new Exception("Error de conexión: " . $conn->connect_error);

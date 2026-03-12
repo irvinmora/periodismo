@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
 
 echo "<h2>Verificación de Base de Datos</h2>";
 
-$conn = @new mysqli('localhost', 'root', '', 'periodismo_utb');
+require_once dirname(__DIR__) . '/conexion.php';
 
 if ($conn->connect_error) {
     echo "<p style='color:red;'>Error de conexión: " . $conn->connect_error . "</p>";

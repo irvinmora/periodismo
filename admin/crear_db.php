@@ -24,7 +24,9 @@ echo "<div class='container'>";
 echo "<h2>Configuración de Base de Datos - Periodismo UTB</h2>";
 
 // Conexión a MySQL (sin especificar base de datos)
-$conn = @new mysqli('localhost', 'root', '');
+$skip_db_connection = true;
+require_once dirname(__DIR__) . '/conexion.php';
+$conn = @new mysqli($db_host, $db_user, $db_pass);
 
 if ($conn->connect_error) {
     echo "<div class='error'>✗ Error de conexión a MySQL: " . $conn->connect_error . "</div>";

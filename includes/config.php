@@ -9,14 +9,8 @@ if (session_status() === PHP_SESSION_NONE) {
  * Contiene la configuración de conexión a la base de datos
  */
 
-// Configuración de la base de datos
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'periodismo_utb');
-
-// Crear conexión MySQLi
-$conn = @new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+// Import connection
+require_once dirname(__DIR__) . '/conexion.php';
 
 // Verificar conexión
 if ($conn->connect_error) {

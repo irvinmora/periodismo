@@ -14,7 +14,7 @@
     <div class="container nav-container">
         <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
             <!-- Logo grande -->
-            <img src="assets/WhatsApp Image 2026-01-22 at 8.41.20 PM.jpeg" 
+            <img src="assets/logo.jpeg" 
                  alt="Impacto Dario - Periodismo UTB" 
                  style="height: 70px; border-radius: 5px; box-shadow: 0 3px 20px rgba(0,0,0,0.15);">
             
@@ -100,9 +100,9 @@
             <div class="noticias-grid">
                 <?php
                 try {
-                    @$conn = new mysqli('localhost', 'root', '', 'periodismo_utb');
+                    require_once 'conexion.php';
                     
-                    if (!$conn->connect_error) {
+                    if ($conn && !$conn->connect_error) {
                         $conn->set_charset("utf8");
                         
                         $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : null;

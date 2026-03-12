@@ -72,7 +72,7 @@ foreach ($configs as $config => $desc) {
 
 // Verificar base de datos
 echo "<h3>4. Verificando conexión a base de datos</h3>";
-$conn = @new mysqli('localhost', 'root', '', 'periodismo_utb');
+require_once dirname(__DIR__) . '/conexion.php';
 if ($conn->connect_error) {
     echo "<p style='color:red;'>✗ Error de conexión: " . $conn->connect_error . "</p>";
 } else {

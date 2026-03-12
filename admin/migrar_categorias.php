@@ -80,9 +80,9 @@
 
             <?php
             try {
-                @$conn = new mysqli('localhost', 'root', '', 'periodismo_utb');
+                require_once dirname(__DIR__) . '/conexion.php';
                 
-                if (!$conn->connect_error) {
+                if ($conn && !$conn->connect_error) {
                     $conn->set_charset("utf8");
                     
                     $categorias_validas = ['Universidad', 'Deportes', 'Cultura', 'Tecnología', 'Sociedad', 'Educación', 'General'];
