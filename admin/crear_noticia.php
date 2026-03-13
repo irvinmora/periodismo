@@ -1,17 +1,14 @@
-﻿<?php
+<?php
 session_start();
-require_once '../config/database.php';
-
-$db = Database::getInstance();
-$conn = $db->getConnection();
-
-if (!$db->isConnected()) {
-    die('Error: No se pudo conectar a la base de datos');
-}
+require_once '../includes/config.php';
 
 if (!isset($_SESSION['admin'])) {
     header('Location: login.php');
     exit();
+}
+
+if ($conn === false) {
+    die('Error: No se pudo conectar a la base de datos. Verifica que MySQL esté activo.');
 }
 
 $mensaje = '';

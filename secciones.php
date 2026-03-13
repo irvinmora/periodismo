@@ -15,13 +15,12 @@
         <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
             <!-- Logo grande -->
             <img src="assets/logo.jpeg" 
-                 alt="Impacto Dario - Periodismo UTB" 
+                 alt="Impacto Dario" 
                  style="height: 70px; border-radius: 5px; box-shadow: 0 3px 20px rgba(0,0,0,0.15);">
             
             <!-- Texto al lado -->
             <div style="line-height: 1.2;">
                 <div style="font-size: 1.4rem; font-weight: 700; color: #1a5fb4;">
-                    <i class="fas fa-newspaper"></i> Periodismo UTB
                 </div>
                 <div style="font-size: 0.9rem; color: #666; font-weight: 500;">
                     

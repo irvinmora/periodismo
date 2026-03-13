@@ -3,42 +3,50 @@
 require_once __DIR__ . '/includes/config.php';
 
 
-// Verificar que la tabla de subtítulos existe
-$check_table = $conn->query("SHOW TABLES LIKE 'noticias_subtitulos'");
-$migration_done = $check_table && $check_table->num_rows > 0;
-
+// Verificar conexión a BD antes de usarla
 $noticia_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $noticia = null;
 $subtitulos = [];
 $show_migration_warning = false;
+$migration_done = false;
 
-if ($noticia_id > 0) {
-    $stmt = $conn->prepare("SELECT * FROM noticias WHERE id = ?");
-    $stmt->bind_param("i", $noticia_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result && $result->num_rows > 0) {
-        $noticia = $result->fetch_assoc();
-        
-        // Obtener subtítulos SOLO si la tabla existe
-        if ($migration_done) {
-            $stmt_subtitulos = $conn->prepare("SELECT * FROM noticias_subtitulos WHERE noticia_id = ? ORDER BY orden ASC");
-            $stmt_subtitulos->bind_param("i", $noticia_id);
-            $stmt_subtitulos->execute();
-            $result_subtitulos = $stmt_subtitulos->get_result();
-            
-            if ($result_subtitulos) {
-                while ($row = $result_subtitulos->fetch_assoc()) {
-                    $subtitulos[] = $row;
+if ($conn instanceof mysqli) {
+    // Verificar que la tabla de subtítulos existe
+    $check_table = $conn->query("SHOW TABLES LIKE 'noticias_subtitulos'");
+    $migration_done = $check_table && $check_table->num_rows > 0;
+
+    if ($noticia_id > 0) {
+        $stmt = $conn->prepare("SELECT * FROM noticias WHERE id = ?");
+        if ($stmt) {
+            $stmt->bind_param("i", $noticia_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result && $result->num_rows > 0) {
+                $noticia = $result->fetch_assoc();
+
+                // Obtener subtítulos SOLO si la tabla existe
+                if ($migration_done) {
+                    $stmt_subtitulos = $conn->prepare("SELECT * FROM noticias_subtitulos WHERE noticia_id = ? ORDER BY orden ASC");
+                    if ($stmt_subtitulos) {
+                        $stmt_subtitulos->bind_param("i", $noticia_id);
+                        $stmt_subtitulos->execute();
+                        $result_subtitulos = $stmt_subtitulos->get_result();
+
+                        if ($result_subtitulos) {
+                            while ($row = $result_subtitulos->fetch_assoc()) {
+                                $subtitulos[] = $row;
+                            }
+                        }
+                        $stmt_subtitulos->close();
+                    }
+                } else {
+                    $show_migration_warning = true;
                 }
             }
-            $stmt_subtitulos->close();
-        } else {
-            $show_migration_warning = true;
+            $stmt->close();
         }
     }
-    $stmt->close();
 }
 ?>
 <!DOCTYPE html>
@@ -252,29 +260,31 @@ if ($noticia_id > 0) {
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
-                <img src="assets/WhatsApp Image 2026-01-22 at 8.41.20 PM.jpeg" 
-                     alt="Impacto Dario - Periodismo UTB" 
-                     style="height: 70px; border-radius: 5px; box-shadow: 0 3px 20px rgba(0,0,0,0.15);">
-                <div style="line-height: 1.2;">
-                    <div style="font-size: 1.4rem; font-weight: 700; color: #1a5fb4;">
-                        <i class="fas fa-newspaper"></i> Periodismo UTB
-                    </div>
+    <div class="container nav-container">
+        <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
+            <img src="assets/logo.jpeg" 
+                 alt="Impacto Diario" 
+                 style="height:70px; border-radius:5px; box-shadow:0 3px 20px rgba(0,0,0,0.15);">
+
+            <div style="line-height: 1.2;">
+                <div style="font-size: 1.4rem; font-weight: 700; color:#1a5fb4;">
                 </div>
-            </a>
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.php" class="nav-link">Inicio</a></li>
-                <li><a href="secciones.php" class="nav-link">Secciones</a></li>
-                <li><a href="index.php#acerca" class="nav-link">Acerca de</a></li>
-                <li><a href="index.php#contacto" class="nav-link">Contacto</a></li>
-                <li><a href="admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
-            </ul>
-        </div>
-    </nav>
+            </div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.php" class="nav-link">Inicio</a></li>
+            <li><a href="secciones.php" class="nav-link">Secciones</a></li>
+            <li><a href="index.php#acerca" class="nav-link">Acerca de</a></li>
+            <li><a href="index.php#contacto" class="nav-link">Contacto</a></li>
+            <li><a href="admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
+        </ul>
+    </div>
+</nav>
 
     <div class="noticia-completa-container">
         <?php
