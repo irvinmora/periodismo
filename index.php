@@ -23,7 +23,7 @@ if ($check_conn && !$check_conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impacto-Diario - Universidad Técnica de Babahoyo</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
@@ -48,9 +48,9 @@ if ($check_conn && !$check_conn->connect_error) {
     <!-- Barra de navegación -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
+            <a href="/" class="logo" style="display: flex; align-items: center; gap: 15px;">
                 <!-- Logo grande -->
-                <img src="assets/logo.jpeg" alt="Impacto Dario - Periodismo UTB"
+                <img src="/assets/logo.jpeg" alt="Impacto Dario - Periodismo UTB"
                     style="height: 70px; border-radius: 5px; box-shadow: 0 3px 20px rgba(0,0,0,0.15);">
 
             </a>
@@ -60,12 +60,12 @@ if ($check_conn && !$check_conn->connect_error) {
             </button>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                <li><a href="#noticias" class="nav-link">Noticias</a></li>
-                <li><a href="secciones.php" class="nav-link">Secciones</a></li>
-                <li><a href="#acerca" class="nav-link">Acerca de</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                <li><a href="admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
+                 <li><a href="/index.php#inicio" class="nav-link active">Inicio</a></li>
+                 <li><a href="/index.php#noticias" class="nav-link">Noticias</a></li>
+                 <li><a href="/secciones.php" class="nav-link">Secciones</a></li>
+                 <li><a href="/index.php#acerca" class="nav-link">Acerca de</a></li>
+                 <li><a href="/index.php#contacto" class="nav-link">Contacto</a></li>
+                 <li><a href="/admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
             </ul>
         </div>
     </nav>
@@ -81,7 +81,7 @@ if ($check_conn && !$check_conn->connect_error) {
             </div>
 
             <div class="hero-image">
-                <img src="assets/hero.jpeg" alt="Impacto Diario">
+                <img src="/assets/hero.jpeg" alt="Impacto Diario">
             </div>
 
 
@@ -109,8 +109,8 @@ if ($check_conn && !$check_conn->connect_error) {
                             while ($row = $result->fetch_assoc()) {
 
                                 $fecha = date("d/m/Y", strtotime($row['fecha_publicacion']));
-                                $imagen = !empty($row['imagen'])
-                                    ? "img/uploads/" . $row['imagen']
+                                 $imagen = !empty($row['imagen'])
+                                    ? "/img/uploads/" . $row['imagen']
                                     : "https://placehold.co/400x300/1a5fb4/ffffff?text=Noticia";
 
                                 $descripcion_corta = substr($row['descripcion'], 0, 150) . "...";
@@ -131,7 +131,7 @@ if ($check_conn && !$check_conn->connect_error) {
                                 echo "</div>";
 
                                 echo "<div style='margin-top: 15px; text-align: center;'>";
-                                echo "<a href='noticia_completa.php?id=" . $row['id'] . "' style='display: inline-block; padding: 8px 16px; background: #1a5fb4; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background 0.3s;'>";
+                                echo "<a href='/noticia_completa.php?id=" . $row['id'] . "' style='display: inline-block; padding: 8px 16px; background: #1a5fb4; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background 0.3s;'>";
                                 echo "<i class='fas fa-eye'></i> Ver Más";
                                 echo "</a>";
                                 echo "</div>";
@@ -245,8 +245,8 @@ if ($check_conn && !$check_conn->connect_error) {
                 </div>
 
                 <div class="acerca-img">
-                    <img src="assets/hero.jpeg"
-                        alt="Universidad Técnica de Babahoyo" onerror="this.onerror=null; this.src='assets/'">
+                    <img src="/assets/hero.jpeg"
+                        alt="Universidad Técnica de Babahoyo" onerror="this.onerror=null; this.src='/assets/logo.jpeg'">
                 </div>
             </div>
         </div>
@@ -359,11 +359,11 @@ if ($check_conn && !$check_conn->connect_error) {
                 <div class="footer-links">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#noticias">Noticias</a></li>
-                        <li><a href="#acerca">Acerca de</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                        <li><a href="admin/login.php" target="_blank">Panel Admin</a></li>
+                         <li><a href="/index.php#inicio">Inicio</a></li>
+                         <li><a href="/secciones.php">Noticias</a></li>
+                         <li><a href="/index.php#acerca">Acerca de</a></li>
+                         <li><a href="/index.php#contacto">Contacto</a></li>
+                         <li><a href="/admin/login.php" target="_blank">Panel Admin</a></li>
                     </ul>
                 </div>
 
@@ -388,7 +388,7 @@ if ($check_conn && !$check_conn->connect_error) {
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>

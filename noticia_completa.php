@@ -55,7 +55,7 @@ if ($conn instanceof mysqli) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $noticia ? htmlspecialchars($noticia['titulo']) : 'Noticia'; ?> - Periodismo UTB</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -261,27 +261,24 @@ if ($conn instanceof mysqli) {
     <!-- Barra de navegación -->
     <nav class="navbar">
     <div class="container nav-container">
-        <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
-            <img src="assets/logo.jpeg" 
-                 alt="Impacto Diario" 
-                 style="height:70px; border-radius:5px; box-shadow:0 3px 20px rgba(0,0,0,0.15);">
-
-            <div style="line-height: 1.2;">
-                <div style="font-size: 1.4rem; font-weight: 700; color:#1a5fb4;">
+            <a href="/" class="logo" style="display: flex; align-items: center; gap: 15px;">
+                <img src="/assets/logo.jpeg" 
+                     alt="Impacto Diario - Periodismo UTB" 
+                     style="height: 70px; border-radius: 5px; box-shadow: 0 3px 20px rgba(0,0,0,0.15);">
+                <div style="line-height: 1.2;">
+                    <div style="font-size: 1.4rem; font-weight: 700; color: #1a5fb4;">
+                    </div>
                 </div>
-            </div>
-        </a>
-
-        <button class="menu-toggle" id="menuToggle">
+            </a><button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </button>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="index.php" class="nav-link">Inicio</a></li>
-            <li><a href="secciones.php" class="nav-link">Secciones</a></li>
-            <li><a href="index.php#acerca" class="nav-link">Acerca de</a></li>
-            <li><a href="index.php#contacto" class="nav-link">Contacto</a></li>
-            <li><a href="admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
+                <li><a href="/index.php" class="nav-link">Inicio</a></li>
+                <li><a href="/secciones.php" class="nav-link">Secciones</a></li>
+                <li><a href="/index.php#acerca" class="nav-link">Acerca de</a></li>
+                <li><a href="/index.php#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="/admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
         </ul>
     </div>
 </nav>
@@ -291,7 +288,7 @@ if ($conn instanceof mysqli) {
         if (!$noticia) {
             echo "<div style='background: #f8d7da; border: 1px solid #f5c6cb; padding: 20px; border-radius: 4px; margin-top: 20px;'>";
             echo "<p style='color: #721c24; margin: 0;'><i class='fas fa-info-circle'></i> Noticia no encontrada.</p>";
-            echo "<a href='index.php' class='volver-btn' style='margin-top: 15px;'><i class='fas fa-arrow-left'></i> Volver al Inicio</a>";
+            echo "<a href='/' class='volver-btn' style='margin-top: 15px;'><i class='fas fa-arrow-left'></i> Volver al Inicio</a>";
             echo "</div>";
         } else {
             // Mostrar encabezado
@@ -318,7 +315,7 @@ if ($conn instanceof mysqli) {
             
             // Imagen principal
             if (!empty($noticia['imagen']) && file_exists('img/uploads/' . $noticia['imagen'])) {
-                echo "<img src='img/uploads/" . htmlspecialchars($noticia['imagen']) . "' alt='" . htmlspecialchars($noticia['titulo']) . "' class='noticia-imagen-principal'>";
+                echo "<img src='/img/uploads/" . htmlspecialchars($noticia['imagen']) . "' alt='" . htmlspecialchars($noticia['titulo']) . "' class='noticia-imagen-principal'>";
             }
             
             // Descripción larga
@@ -355,7 +352,7 @@ if ($conn instanceof mysqli) {
                     echo "<div class='multimedia-item'>";
                     echo "<i class='fas fa-volume-up'></i>";
                     echo "<audio controls>";
-                    echo "<source src='admin/audios/uploads/" . htmlspecialchars($noticia['audio_principal']) . "'>";
+                    echo "<source src='/admin/audios/uploads/" . htmlspecialchars($noticia['audio_principal']) . "'>";
                     echo "</audio>";
                     echo "</div>";
                 }
@@ -386,7 +383,7 @@ if ($conn instanceof mysqli) {
                     
                     // Imagen del subtítulo
                     if (!empty($subtitulo['imagen']) && file_exists('img/uploads/' . $subtitulo['imagen'])) {
-                        echo "<img src='img/uploads/" . htmlspecialchars($subtitulo['imagen']) . "' alt='" . htmlspecialchars($subtitulo['subtitulo']) . "' style='width: 100%; max-height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 15px;'>";
+                        echo "<img src='/img/uploads/" . htmlspecialchars($subtitulo['imagen']) . "' alt='" . htmlspecialchars($subtitulo['subtitulo']) . "' style='width: 100%; max-height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 15px;'>";
                     }
                     
                     // Descripción del subtítulo
@@ -419,7 +416,7 @@ if ($conn instanceof mysqli) {
                             echo "<div class='multimedia-item'>";
                             echo "<i class='fas fa-volume-up'></i>";
                             echo "<audio controls>";
-                            echo "<source src='admin/audios/uploads/" . htmlspecialchars($subtitulo['audio']) . "'>";
+                            echo "<source src='/admin/audios/uploads/" . htmlspecialchars($subtitulo['audio']) . "'>";
                             echo "</audio>";
                             echo "</div>";
                         }
@@ -440,17 +437,9 @@ if ($conn instanceof mysqli) {
             }
             
             // Botón de volver
-            echo "<a href='index.php' class='volver-btn'><i class='fas fa-arrow-left'></i> Volver al Inicio</a>";
+            echo "<a href='/' class='volver-btn'><i class='fas fa-arrow-left'></i> Volver al Inicio</a>";
             
-            // Mostrar advertencia de migración si aplica
-            if ($show_migration_warning) {
-                echo "<div style='background: #fff3cd; border: 2px solid #ffc107; padding: 20px; margin: 30px 0; border-radius: 4px;'>";
-                echo "<h4 style='color: #856404; margin-top: 0;'><i class='fas fa-info-circle'></i> Información Importante</h4>";
-                echo "<p style='color: #856404; margin: 10px 0;'>Para acceder a los subtítulos y contenido expandido, debes ejecutar la migración de la base de datos.</p>";
-                echo "<a href='migracion_multimedia.php' style='background: #ffc107; color: #333; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; font-weight: bold;'>";
-                echo "<i class='fas fa-database'></i> Ejecutar Migración</a>";
-                echo "</div>";
-            }
+
         }
         ?>
     </div>
@@ -467,11 +456,11 @@ if ($conn instanceof mysqli) {
                 <div class="footer-links">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="index.php">Inicio</a></li>
-                        <li><a href="secciones.php">Secciones</a></li>
-                        <li><a href="index.php#acerca">Acerca de</a></li>
-                        <li><a href="index.php#contacto">Contacto</a></li>
-                        <li><a href="admin/login.php" target="_blank">Panel Admin</a></li>
+                        <li><a href="/index.php#inicio">Inicio</a></li>
+                        <li><a href="/secciones.php">Noticias</a></li>
+                        <li><a href="/index.php#acerca">Acerca de</a></li>
+                        <li><a href="/index.php#contacto">Contacto</a></li>
+                        <li><a href="/admin/login.php" target="_blank">Panel Admin</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -488,6 +477,6 @@ if ($conn instanceof mysqli) {
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>

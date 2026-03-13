@@ -1,43 +1,46 @@
 # Activar mod_rewrite
 RewriteEngine On
-RewriteBase /periodismo-utb/
+RewriteBase /
 
-# Redirigir todo a index.php si no existe archivo o carpeta
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+# ─── URLs limpias ────────────────────────────────────────────────
+# /noticias/8  →  noticia_completa.php?id=8
+RewriteRule ^noticias/([0-9]+)/?$  noticia_completa.php?id=$1 [QSA,L]
 
-# Manejo de errores personalizados
-ErrorDocument 404 /periodismo-utb/404.php
-ErrorDocument 500 /periodismo-utb/500.php
+# /secciones  →  secciones.php
+RewriteRule ^secciones/?$  secciones.php [QSA,L]
 
-# Seguridad: bloquear archivos sensibles
+# ─── Servir archivos y carpetas reales directamente ──────────────
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ─── Seguridad ───────────────────────────────────────────────────
+# Bloquear archivos sensibles
 <FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|env)$">
     Require all denied
 </FilesMatch>
 
-# Bloquear acceso a carpetas internas
-RedirectMatch 403 ^/periodismo-utb/(config|includes|private)/
+# Bloquear acceso directo a carpetas internas
+RedirectMatch 403 ^/(config|includes)/
 
 # Desactivar listado de directorios
 Options -Indexes
 
-# Protección básica contra hotlink
+# Protección básica contra hotlink de imágenes
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?localhost [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?irvinmora [NC]
 RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
 
-# Compresión para mejorar rendimiento
+# ─── Rendimiento ─────────────────────────────────────────────────
 <IfModule mod_deflate.c>
-AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript
 </IfModule>
 
-# Cache para archivos estáticos
 <IfModule mod_expires.c>
-ExpiresActive On
-ExpiresByType image/jpg "access plus 1 month"
-ExpiresByType image/jpeg "access plus 1 month"
-ExpiresByType image/png "access plus 1 month"
-ExpiresByType text/css "access plus 7 days"
-ExpiresByType application/javascript "access plus 7 days"
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png  "access plus 1 month"
+    ExpiresByType text/css   "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
 </IfModule>

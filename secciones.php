@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secciones - Periodismo UTB</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -12,9 +12,9 @@
     <!-- Barra de navegación -->
     <nav class="navbar">
     <div class="container nav-container">
-        <a href="index.php" class="logo" style="display: flex; align-items: center; gap: 15px;">
+        <a href="/" class="logo" style="display: flex; align-items: center; gap: 15px;">
             <!-- Logo grande -->
-            <img src="assets/logo.jpeg" 
+            <img src="/assets/logo.jpeg" 
                  alt="Impacto Dario" 
                  style="height: 70px; border-radius: 5px; box-shadow: 0 3px 20px rgba(0,0,0,0.15);">
             
@@ -32,11 +32,11 @@
             <i class="fas fa-bars"></i>
         </button>
         <ul class="nav-menu" id="navMenu">
-            <li><a href="index.php" class="nav-link">Inicio</a></li>
-            <li><a href="secciones.php" class="nav-link active">Secciones</a></li>
-            <li><a href="index.php#acerca" class="nav-link">Acerca de</a></li>
-            <li><a href="index.php#contacto" class="nav-link">Contacto</a></li>
-            <li><a href="admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
+            <li><a href="/index.php" class="nav-link">Inicio</a></li>
+            <li><a href="/secciones.php" class="nav-link active">Secciones</a></li>
+            <li><a href="/index.php#acerca" class="nav-link">Acerca de</a></li>
+            <li><a href="/index.php#contacto" class="nav-link">Contacto</a></li>
+            <li><a href="/admin/login.php" class="nav-link admin-btn" target="_blank">Panel Admin</a></li>
         </ul>
     </div>
 </nav>
@@ -48,31 +48,31 @@
             
             <!-- Botones de filtro -->
             <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; justify-content: center;">
-                <a href="secciones.php" class="btn-filter<?php echo !isset($_GET['categoria']) ? ' active' : ''; ?>" style="<?php echo !isset($_GET['categoria']) ? 'background: #1a5fb4; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php" class="btn-filter<?php echo !isset($_GET['categoria']) ? ' active' : ''; ?>" style="<?php echo !isset($_GET['categoria']) ? 'background: #1a5fb4; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-th"></i> Todas
                 </a>
-                <a href="secciones.php?categoria=Deporte" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Deporte') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Deporte') ? 'background: #f44336; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Deporte" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Deporte') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Deporte') ? 'background: #f44336; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-football"></i> Deporte
                 </a>
-                <a href="secciones.php?categoria=Tecnologia" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Tecnologia') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Tecnologia') ? 'background: #9C27B0; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Tecnologia" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Tecnologia') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Tecnologia') ? 'background: #9C27B0; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-laptop"></i> Tecnologia
                 </a>
-                <a href="secciones.php?categoria=Sociedad" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Sociedad') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Sociedad') ? 'background: #4CAF50; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Sociedad" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Sociedad') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Sociedad') ? 'background: #4CAF50; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-users"></i> Sociedad
                 </a>
-                <a href="secciones.php?categoria=Educacion" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Educacion') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Educacion') ? 'background: #FF5722; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Educacion" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Educacion') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Educacion') ? 'background: #FF5722; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-book"></i> Educacion
                 </a>
-                <a href="secciones.php?categoria=Internacional" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Internacional') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Internacional') ? 'background: #2196F3; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Internacional" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Internacional') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Internacional') ? 'background: #2196F3; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-globe"></i> Internacional
                 </a>
-                <a href="secciones.php?categoria=Local/Regional" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Local/Regional') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Local/Regional') ? 'background: #FF9800; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Local/Regional" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Local/Regional') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Local/Regional') ? 'background: #FF9800; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-map-marker-alt"></i> Local/Regional
                 </a>
-                <a href="secciones.php?categoria=Politica" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Politica') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Politica') ? 'background: #E74C3C; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Politica" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Politica') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Politica') ? 'background: #E74C3C; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-gavel"></i> Politica
                 </a>
-                <a href="secciones.php?categoria=Negocios" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Negocios') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Negocios') ? 'background: #FF6B35; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
+                <a href="/secciones.php?categoria=Negocios" class="btn-filter<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Negocios') ? ' active' : ''; ?>" style="<?php echo (isset($_GET['categoria']) && $_GET['categoria'] == 'Negocios') ? 'background: #FF6B35; color: white;' : 'background: white; color: #333; border: 2px solid #ddd;'; ?>">
                     <i class="fas fa-briefcase"></i> Negocios
                 </a>
             </div>
@@ -125,7 +125,7 @@
                         if ($result && $result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 $fecha = date("d/m/Y", strtotime($row['fecha_publicacion']));
-                                $imagen = !empty($row['imagen']) ? "img/uploads/" . $row['imagen'] : "https://placehold.co/400x300/1a5fb4/ffffff?text=Noticia";
+                                 $imagen = !empty($row['imagen']) ? "/img/uploads/" . $row['imagen'] : "https://placehold.co/400x300/1a5fb4/ffffff?text=Noticia";
                                 $descripcion_corta = substr($row['descripcion'], 0, 150) . "...";
                                 
                                 echo "<div class='noticia-card'>";
@@ -141,7 +141,7 @@
                                 echo "<span><i class='far fa-user'></i> {$row['autor']}</span>";
                                 echo "</div>";
                                 echo "<div style='margin-top: 15px; text-align: center;'>";
-                                echo "<a href='noticia_completa.php?id=" . $row['id'] . "' style='display: inline-block; padding: 8px 16px; background: #1a5fb4; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background 0.3s;'>";
+                                echo "<a href='/noticia_completa.php?id=" . $row['id'] . "' style='display: inline-block; padding: 8px 16px; background: #1a5fb4; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background 0.3s;'>";
                                 echo "<i class='fas fa-eye'></i> Ver Más";
                                 echo "</a>";
                                 echo "</div>";
@@ -176,11 +176,11 @@
                 <div class="footer-links">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="index.php#inicio">Inicio</a></li>
-                        <li><a href="secciones.php">Secciones</a></li>
-                        <li><a href="index.php#acerca">Acerca de</a></li>
-                        <li><a href="index.php#contacto">Contacto</a></li>
-                        <li><a href="admin/login.php" target="_blank">Panel Admin</a></li>
+                        <li><a href="/index.php#inicio">Inicio</a></li>
+                        <li><a href="/secciones.php">Secciones</a></li>
+                        <li><a href="/index.php#acerca">Acerca de</a></li>
+                        <li><a href="/index.php#contacto">Contacto</a></li>
+                        <li><a href="/admin/login.php" target="_blank">Panel Admin</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -201,6 +201,6 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
