@@ -212,19 +212,24 @@ if ($conn !== false) {
 </head>
 <body>
     <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.php" class="logo">
-                <i class="fas fa-newspaper"></i>
-                <span>Periodismo UTB - Admin</span>
+    <div class="container nav-container">
+        <a href="../index.php" class="logo">
+            <img src="../assets/logo.jpeg" 
+                 alt="Impacto Diario - Periodismo UTB"
+                 style="height:70px; border-radius:5px; box-shadow:0 3px 20px rgba(0,0,0,0.15);">
+        </a>
+
+        <div>
+            <span style="margin-right: 15px; color: var(--primary-color);">
+                <i class="fas fa-user"></i> <?php echo $_SESSION['admin_nombre']; ?>
+            </span>
+
+            <a href="logout.php" class="btn" style="background-color: var(--secondary-color);">
+                Cerrar Sesión
             </a>
-            <div>
-                <span style="margin-right: 15px; color: var(--primary-color);">
-                    <i class="fas fa-user"></i> <?php echo $_SESSION['admin_nombre']; ?>
-                </span>
-                <a href="logout.php" class="btn" style="background-color: var(--secondary-color);">Cerrar Sesión</a>
-            </div>
         </div>
-    </nav>
+    </div>
+</nav>
     
     <div class="dashboard container">
         <h1>Panel de Administración</h1>
