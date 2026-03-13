@@ -3,33 +3,30 @@ name: Deploy to InfinityFree via FTP
 on:
   push:
     branches:
-      - main
       - master
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  ftp-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
-      
-      - name: 📂 Sync files
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🎉 Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftpupload.net
+          username: if0_41082809
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: htdocs/ # La carpeta pública predeterminada en InfinityFree puede variar, pero generalmente es htdocs/ o public_html/
+          port: 21
+          server-dir: /htdocs/
           exclude: |
             **/.git*
             **/.git*/**
             .github/**
             README.md
             *.sql
-            # Excluimos directorios locales innecesarios
             img/uploads/**
             admin/videos/uploads/**
             admin/audios/uploads/**
-          dangerous-clean-slate: false # Para InfinityFree esto debe ser false, para que no borre todo tu servidor primero.
-          security: loose # InfinityFree utiliza FTP estándar, no FTPS de forma predeterminada
